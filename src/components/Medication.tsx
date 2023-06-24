@@ -19,10 +19,11 @@ const Medication = ({ medication }: MedicationProps) => {
   return (
     <>
       <div
-        className="flex gap-4 cursor-pointer"
+        className="flex gap-3 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <PlayArrowIcon
+          fontSize="small"
           className={`${
             isOpen ? "transform rotate-90" : ""
           } transition-transform duration-200 ease-in-out`}
@@ -38,7 +39,17 @@ const Medication = ({ medication }: MedicationProps) => {
         animate={isOpen ? "open" : "closed"}
         transition={{ duration: 0.3 }}
       >
-        <div className="p-4">{medication.description}</div>
+        <div className="p-4 text-left flex flex-col gap-5">
+          <div>
+            <strong>DESCRIPTION:</strong>{" "}
+            {medication.description[0].substring(15)}
+          </div>
+
+          <div>
+            <strong>DOSAGE:</strong>{" "}
+            {medication.dosage_forms_and_strengths[0].substring(29)}
+          </div>
+        </div>
       </motion.div>
     </>
   );

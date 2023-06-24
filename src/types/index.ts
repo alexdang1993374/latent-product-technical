@@ -3,14 +3,7 @@ export type TMedication =
   | "Thiazide+Diuretic"
   | "nonsteroidal+anti-inflammatory+drug";
 
-export interface IDrug {
-  name: string;
-  query: TMedication;
-}
-
 export interface IMedicationResult {
-  indications_and_usage: string[];
-  dosage_and_administration: string[];
   dosage_forms_and_strengths: string[];
   description: string[];
   openfda: {
