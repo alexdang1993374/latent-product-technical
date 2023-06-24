@@ -2,6 +2,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { useUser } from "@/hooks/useUser";
 import { IMedicationResult } from "@/types";
 
 interface MedicationProps {
@@ -15,24 +16,40 @@ const variants = {
 };
 
 const Medication = ({ medication, isLast }: MedicationProps) => {
+  const { user } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const noDetails: boolean =
     !medication.description && !medication.dosage_forms_and_strengths;
 
+  const addToPerscriptions = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
       <div
-        className="flex gap-3 cursor-pointer"
+        className="flex w-full justify-between cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <PlayArrowIcon
-          fontSize="small"
-          className={`${
-            isOpen ? "transform rotate-90" : ""
-          } transition-transform duration-200 ease-in-out`}
-        />
+        <div className="flex gap-3">
+          <PlayArrowIcon
+            fontSize="small"
+            className={`${
+              isOpen ? "transform rotate-90" : ""
+            } transition-transform duration-200 ease-in-out`}
+          />
 
-        {medication.openfda.brand_name[0]}
+          {medication.openfda.brand_name[0]}
+        </div>
+
+        {user && (
+          <button
+            className="rounded-full bg-gray-500 py-2 px-4"
+            onClick={addToPerscriptions}
+          >
+            Add to perscriptions
+          </button>
+        )}
       </div>
 
       <motion.div
