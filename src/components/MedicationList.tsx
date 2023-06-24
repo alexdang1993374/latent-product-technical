@@ -37,7 +37,9 @@ const MedicationList = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 text-left">
+      <p className="text-xl mb-4 font-bold">Click to see details</p>
+
       {medicationData.map((result: IMedicationResult, index: number) => (
         <Medication
           key={result.openfda.brand_name[0] + index}

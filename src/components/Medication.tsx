@@ -15,6 +15,8 @@ const variants = {
 
 const Medication = ({ medication }: MedicationProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const noDetails =
+    !medication.description && !medication.dosage_forms_and_strengths;
 
   return (
     <>
@@ -40,15 +42,25 @@ const Medication = ({ medication }: MedicationProps) => {
         transition={{ duration: 0.3 }}
       >
         <div className="p-4 text-left flex flex-col gap-5">
-          <div>
-            <strong>DESCRIPTION:</strong>{" "}
-            {medication.description[0].substring(15)}
-          </div>
+          {noDetails ? (
+            <div>No details available</div>
+          ) : (
+            <>
+              {medication.description && (
+                <div>
+                  <strong>DESCRIPTION:</strong>{" "}
+                  {medication.description[0].substring(15)}
+                </div>
+              )}
 
-          <div>
-            <strong>DOSAGE:</strong>{" "}
-            {medication.dosage_forms_and_strengths[0].substring(29)}
-          </div>
+              {medication.dosage_forms_and_strengths && (
+                <div>
+                  <strong>APPLICATION & DOSAGE:</strong>{" "}
+                  {medication.dosage_forms_and_strengths[0].substring(29)}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </motion.div>
     </>
