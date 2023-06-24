@@ -13,11 +13,13 @@ export default function Home() {
         </div>
 
         <div className="w-full flex justify-center">
-          <DrugSelector />
+          <div className="md:mr-20">
+            <DrugSelector />
+          </div>
         </div>
       </nav>
 
-      <div className="mt-20 md:mt-10">
+      <div className="mt-20 md:mt-10 w-full flex flex-col text-center">
         <MedicationList />
       </div>
     </main>

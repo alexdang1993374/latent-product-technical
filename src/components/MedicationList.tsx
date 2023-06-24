@@ -36,7 +36,7 @@ const MedicationList = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {medicationData.map((result: IMedicationResult, index: number) => (
         <div key={"medication" + index}>
           <div>{result.openfda.brand_name[0]}</div>
