@@ -12,7 +12,7 @@ export default function Home() {
 
       <DrugSelector />
 
-      <MedicationList medication="Tumor+Necrosis+Factor+Blocker" />
+      <MedicationList />
     </main>
   );
 }

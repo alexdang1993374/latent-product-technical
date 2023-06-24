@@ -7,3 +7,9 @@ export interface IDrug {
   name: string;
   query: TMedication;
 }
+
+export interface IMedicationResult {
+  openfda: {
+    brand_name: string[];
+  };
+}

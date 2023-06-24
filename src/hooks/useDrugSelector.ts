@@ -2,12 +2,12 @@ import { TMedication } from "@/types";
 import { create } from "zustand";
 
 interface IDrugSelectorStore {
-  selectedDrug: TMedication | null;
+  selectedDrug: TMedication | undefined;
   setSelectedDrug: (drug: TMedication) => void;
 }
 
 const useDrugSelector = create<IDrugSelectorStore>((set) => ({
-  selectedDrug: null,
+  selectedDrug: undefined,
   setSelectedDrug: (drug) => set({ selectedDrug: drug }),
 }));
 
