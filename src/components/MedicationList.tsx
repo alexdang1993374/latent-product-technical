@@ -2,10 +2,10 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import useDrugSelector from "@/hooks/useDrugSelector";
 import { IMedicationResult, TMedication } from "@/types";
+import Medication from "./Medication";
 
 const MedicationList = () => {
   const drugSelector = useDrugSelector();
@@ -39,12 +39,10 @@ const MedicationList = () => {
   return (
     <div className="flex flex-col gap-4">
       {medicationData.map((result: IMedicationResult, index: number) => (
-        <div key={"medication" + index}>
-          <div className="flex gap-4">
-            <PlayArrowIcon />
-            {result.openfda.brand_name[0]}
-          </div>
-        </div>
+        <Medication
+          key={result.openfda.brand_name[0] + index}
+          medication={result}
+        />
       ))}
     </div>
   );
