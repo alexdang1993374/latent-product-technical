@@ -2,10 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-export interface MenuItem {
-  label: string;
-  onClick: VoidFunction;
-}
+import { MenuItem } from "@/types";
 
 interface DropdownProps {
   buttonLabel: string;
@@ -13,7 +10,7 @@ interface DropdownProps {
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, menuItems }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 

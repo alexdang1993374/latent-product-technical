@@ -3,55 +3,46 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BounceLoader } from "react-spinners";
-import Image from "next/image";
 
 import useDrugSelector from "@/hooks/useDrugSelector";
 import { IMedicationResult, TMedication } from "@/types";
+import Default from "./Default";
 import Medication from "./Medication";
-import latentLogo from "../../public/latent.svg";
 
 const MedicationList = () => {
   const drugSelector = useDrugSelector();
   const [medicationData, setMedicationData] = useState<IMedicationResult[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchMedication = async (medication: TMedication) => {
-      setLoading(true);
+      if (isMounted) {
+        setLoading(true);
+      }
+
       const response = await axios.get(
         `https://api.fda.gov/drug/label.json?search=openfda.pharm_class_epc:%22{${medication}}%22&limit=100`
       );
 
-      setMedicationData(response.data.results);
-      setLoading(false);
+      if (isMounted) {
+        setMedicationData(response.data.results);
+        setLoading(false);
+      }
     };
 
     if (drugSelector.selectedDrug) {
       fetchMedication(drugSelector.selectedDrug);
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [drugSelector]);
 
   if (medicationData.length === 0 && !loading) {
-    return (
-      <div className="w-full h-full flex justify-center items-center flex-col gap-16">
-        <div>
-          <Image
-            src={latentLogo}
-            alt="Latent Logo"
-            width={334}
-            height={64}
-            className="object-cover"
-          />
-        </div>
-
-        <div>
-          <p className="text-xl">
-            Building Medical Language Models to automate hospital operations,
-            starting with insurance authorizations
-          </p>
-        </div>
-      </div>
-    );
+    return <Default />;
   }
 
   if (loading) {

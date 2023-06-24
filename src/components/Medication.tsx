@@ -14,8 +14,8 @@ const variants = {
 };
 
 const Medication = ({ medication }: MedicationProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const noDetails =
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const noDetails: boolean =
     !medication.description && !medication.dosage_forms_and_strengths;
 
   return (
