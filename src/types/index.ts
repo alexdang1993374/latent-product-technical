@@ -15,3 +15,11 @@ export interface MenuItem {
   label: string;
   onClick: VoidFunction;
 }
+
+export interface IUserDetails {
+  id: string;
+  first_name: string;
+  last_name: string;
+  full_name?: string;
+  avatar_url?: string;
+}

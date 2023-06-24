@@ -1,3 +1,6 @@
+import ModalProvider from "../../providers/ModalProvider";
+import SupabaseProvider from "../../providers/SupabaseProvider";
+import UserProvider from "../../providers/UserProvider";
 import "./globals.css";
 import { Figtree } from "next/font/google";
 
@@ -15,7 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider />
+            {children}
+          </UserProvider>
+        </SupabaseProvider>
+      </body>
     </html>
   );
 }
