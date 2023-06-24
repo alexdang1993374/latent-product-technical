@@ -61,6 +61,7 @@ const MedicationList = () => {
         <Medication
           key={result.openfda.brand_name[0] + index}
           medication={result}
+          isLast={index === medicationData.length - 1}
         />
       ))}
     </div>

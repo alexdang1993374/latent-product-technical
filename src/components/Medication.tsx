@@ -6,6 +6,7 @@ import { IMedicationResult } from "@/types";
 
 interface MedicationProps {
   medication: IMedicationResult;
+  isLast: boolean;
 }
 
 const variants = {
@@ -13,7 +14,7 @@ const variants = {
   closed: { height: 0 },
 };
 
-const Medication = ({ medication }: MedicationProps) => {
+const Medication = ({ medication, isLast }: MedicationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const noDetails: boolean =
     !medication.description && !medication.dosage_forms_and_strengths;
@@ -35,7 +36,9 @@ const Medication = ({ medication }: MedicationProps) => {
       </div>
 
       <motion.div
-        className="overflow-hidden rounded-lg bg-gray-500"
+        className={`overflow-hidden rounded-lg bg-gray-500 ${
+          isLast ? "mb-8" : ""
+        }`}
         variants={variants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
