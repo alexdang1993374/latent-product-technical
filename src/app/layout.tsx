@@ -1,8 +1,9 @@
+import { Figtree } from "next/font/google";
 import ModalProvider from "../../providers/ModalProvider";
 import SupabaseProvider from "../../providers/SupabaseProvider";
+import ToasterProvider from "../../providers/ToasterProvider";
 import UserProvider from "../../providers/UserProvider";
 import "./globals.css";
-import { Figtree } from "next/font/google";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -19,10 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
-            {children}
+            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+              {children}
+            </main>
           </UserProvider>
         </SupabaseProvider>
       </body>
