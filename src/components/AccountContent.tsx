@@ -1,10 +1,14 @@
-"use client";
-
-import { useUser } from "@/hooks/useUser";
+import getUserDetials from "@/actions/getUserDetails";
 import SignOut from "./SignOut";
 
-const AccountContent = () => {
-  const { user } = useUser();
+const getUser = async () => {
+  const data = await getUserDetials();
+
+  return data;
+};
+
+const AccountContent = async () => {
+  const user = await getUser();
 
   if (!user) {
     return (
@@ -15,7 +19,9 @@ const AccountContent = () => {
   }
 
   return (
-    <div>
+    <div className="w-full h-full flex flex-col gap-5">
+      <div>Welcome {user.full_name}</div>
+
       <SignOut />
     </div>
   );
