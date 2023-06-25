@@ -4,11 +4,11 @@ import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { uuid } from "uuidv4";
 
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 interface ILikeButton {
   medicationName: string;
@@ -76,7 +76,7 @@ const LikeButton = ({ medicationName }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(true);
-        toast.success("Liked!");
+        toast.success("Added to perscriptions!");
       }
     }
 

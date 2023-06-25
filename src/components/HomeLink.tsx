@@ -6,8 +6,8 @@ const HomeLink = () => {
   const router = useRouter();
 
   return (
-    <div className="cursor-pointer" onClick={() => router.push("/")}>
-      Home
+    <div className="cursor-pointer mr-10" onClick={() => router.push("/")}>
+      <p>Home</p>
     </div>
   );
 };

@@ -21,3 +21,8 @@ export interface IUserDetails {
   full_name?: string;
   avatar_url?: string;
 }
+
+export interface IPerscription {
+  medication: string;
+  id: string;
+}

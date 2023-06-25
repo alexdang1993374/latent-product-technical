@@ -26,14 +26,16 @@ const DrugSelector = () => {
   ];
 
   return (
-    <Dropdown
-      menuItems={sortOptions}
-      buttonLabel={
-        drugSelector.selectedDrug
-          ? transformString(drugSelector.selectedDrug)
-          : "Select a medication type"
-      }
-    />
+    <div className="mt-2 md:mt-0">
+      <Dropdown
+        menuItems={sortOptions}
+        buttonLabel={
+          drugSelector.selectedDrug
+            ? transformString(drugSelector.selectedDrug)
+            : "Select a medication type"
+        }
+      />
+    </div>
   );
 };
 

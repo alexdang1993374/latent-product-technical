@@ -11,12 +11,17 @@ const Nav = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="w-full flex flex-col md:flex-row items-center justify-between fixed top-0 z-2 px-24 py-5 gap-1 bg-black">
+    <nav
+      className={
+        "w-full flex items-center justify-between fixed top-0 z-2 px-12 md:px-24 py-5 gap-1 bg-black " +
+        (pathName === "/account" ? "flex-row" : "flex-col md:flex-row")
+      }
+    >
       <LogoLink />
 
       {pathName === "/account" ? <HomeLink /> : <DrugSelector />}
 
-      <div className="hidden md:block">
+      <div className={pathName === "/account" ? "block" : "hidden md:block"}>
         <AccountIcon />
       </div>
     </nav>

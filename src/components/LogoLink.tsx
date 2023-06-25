@@ -19,7 +19,13 @@ const LogoLink = () => {
   };
 
   return (
-    <div className="w-full md:w-20 h-10 flex items-center justify-between">
+    <div
+      className={
+        pathName === "/account"
+          ? ""
+          : "w-full" + " md:w-20 h-10 flex items-center justify-between"
+      }
+    >
       <div
         className={pathName === "/account" ? "cursor-pointer" : ""}
         onClick={goHome}
@@ -33,9 +39,11 @@ const LogoLink = () => {
         />
       </div>
 
-      <div className="flex md:hidden justify-end">
-        <AccountIcon />
-      </div>
+      {pathName !== "/account" && (
+        <div className="flex md:hidden justify-end">
+          <AccountIcon />
+        </div>
+      )}
     </div>
   );
 };

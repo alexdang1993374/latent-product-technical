@@ -2,7 +2,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { useUser } from "@/hooks/useUser";
 import { IMedicationResult } from "@/types";
 import LikedButton from "./LikedButton";
 
@@ -17,19 +16,14 @@ const variants = {
 };
 
 const Medication = ({ medication, isLast }: MedicationProps) => {
-  const { user } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const noDetails: boolean =
     !medication.description && !medication.dosage_forms_and_strengths;
 
-  const addToPerscriptions = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
     <>
       <div
-        className="flex flex-col md:flex-row w-full justify-between cursor-pointer"
+        className="flex flex-row w-full justify-between cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex gap-3">
