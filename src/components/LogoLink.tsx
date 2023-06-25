@@ -10,6 +10,8 @@ const LogoLink = () => {
   const router = useRouter();
   const pathName = usePathname();
 
+  const isAccountsPage = pathName === "/account";
+
   const goHome = () => {
     if (pathName !== "/account") {
       return;
@@ -21,15 +23,12 @@ const LogoLink = () => {
   return (
     <div
       className={
-        pathName === "/account"
+        isAccountsPage
           ? ""
           : "w-full" + " md:w-20 h-10 flex items-center justify-between"
       }
     >
-      <div
-        className={pathName === "/account" ? "cursor-pointer" : ""}
-        onClick={goHome}
-      >
+      <div className={isAccountsPage ? "cursor-pointer" : ""} onClick={goHome}>
         <Image
           src={latentLogo}
           alt="Latent Logo"

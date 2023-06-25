@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { ReactNode } from "react";
 import { IoMdClose } from "react-icons/io";
 
 interface IModal {

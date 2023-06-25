@@ -9,19 +9,20 @@ import LogoLink from "./LogoLink";
 
 const Nav = () => {
   const pathName = usePathname();
+  const isAccountsPage = pathName === "/account";
 
   return (
     <nav
       className={
         "w-full flex items-center justify-between fixed top-0 z-2 px-12 md:px-24 py-5 gap-1 bg-black " +
-        (pathName === "/account" ? "flex-row" : "flex-col md:flex-row")
+        (isAccountsPage ? "flex-row" : "flex-col md:flex-row")
       }
     >
       <LogoLink />
 
-      {pathName === "/account" ? <HomeLink /> : <DrugSelector />}
+      {isAccountsPage ? <HomeLink /> : <DrugSelector />}
 
-      <div className={pathName === "/account" ? "block" : "hidden md:block"}>
+      <div className={isAccountsPage ? "block" : "hidden md:block"}>
         <AccountIcon />
       </div>
     </nav>
