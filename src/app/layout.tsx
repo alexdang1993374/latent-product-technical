@@ -26,7 +26,7 @@ export default function RootLayout({
           <UserProvider>
             <ModalProvider />
             <Nav />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-hero-pattern bg-cover bg-no-repeat bg-center">
               {children}
             </main>
           </UserProvider>

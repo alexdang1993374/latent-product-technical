@@ -7,7 +7,7 @@ const HomeLink = () => {
 
   return (
     <div className="cursor-pointer mr-10" onClick={() => router.push("/")}>
-      <p>Home</p>
+      <p className="font-bold">Home</p>
     </div>
   );
 };
