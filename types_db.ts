@@ -4,72 +4,79 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json }
-  | Json[]
+  | Json[];
 
 export interface Database {
   public: {
     Tables: {
       perscriptions: {
         Row: {
-          created_at: string | null
-          id: number
-          medication: string | null
-          user_id: string | null
-        }
+          created_at: string | null;
+          medication: string | null;
+          user_id: string;
+        };
         Insert: {
-          created_at?: string | null
-          id?: number
-          medication?: string | null
-          user_id?: string | null
-        }
+          created_at?: string | null;
+          medication?: string | null;
+          user_id: string;
+        };
         Update: {
-          created_at?: string | null
-          id?: number
-          medication?: string | null
-          user_id?: string | null
-        }
+          created_at?: string | null;
+          medication?: string | null;
+          user_id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "perscriptions_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: "perscriptions_user_id_fkey";
+            columns: ["user_id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           }
-        ]
-      }
+        ];
+      };
       users: {
         Row: {
-          created_at: string | null
-          email: string | null
-          id: string
-          name: string | null
-        }
+          avatar_url: string | null;
+          billing_address: Json | null;
+          full_name: string | null;
+          id: string;
+          payment_method: Json | null;
+        };
         Insert: {
-          created_at?: string | null
-          email?: string | null
-          id: string
-          name?: string | null
-        }
+          avatar_url?: string | null;
+          billing_address?: Json | null;
+          full_name?: string | null;
+          id: string;
+          payment_method?: Json | null;
+        };
         Update: {
-          created_at?: string | null
-          email?: string | null
-          id?: string
-          name?: string | null
-        }
-        Relationships: []
-      }
-    }
+          avatar_url?: string | null;
+          billing_address?: Json | null;
+          full_name?: string | null;
+          id?: string;
+          payment_method?: Json | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
+      [_ in never]: never;
+    };
+  };
 }
