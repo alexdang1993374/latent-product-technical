@@ -11,7 +11,7 @@ const PerscriptionsTable = async () => {
   const perscriptions = await getPerscriptionList();
 
   return (
-    <div className="flex flex-col min-w-[350px]">
+    <div className="flex flex-col w-[350px]">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 rounded-md">
