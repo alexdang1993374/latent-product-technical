@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Latent Health Technical Project
+
+This project is a full stack application developed as a technical project for Latent Health. It is built with Next.js, using the new app router, and optimized with React server components for an efficient, high-performing user experience.
+
+Visit the website at [https://latent-product-technical.vercel.app/](https://latent-product-technical.vercel.app/)
+
+## Table of Contents
+
+1. [Features](#Features)
+2. [Technologies Used](#Technologies-Used)
+3. [Getting Started](#Getting-Started)
+
+## Features
+
+- List out medications from FDA API
+- Display detailed information about each medication
+- User registration system
+- Save specific medications to personalized list of prescriptions
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/)
+- [React Server Components](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)
+- [Supabase](https://supabase.io/)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+1. Clone the repository:
+
+```sh
+git clone https://github.com/alexdang1993374/latent-product-technical.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install NPM packages:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run the development server:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+npm run dev
+```
