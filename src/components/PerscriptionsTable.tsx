@@ -11,7 +11,7 @@ const PerscriptionsTable = async () => {
   const perscriptions = await getPerscriptionList();
 
   return (
-    <div className="flex flex-col w-[350px]">
+    <div className="flex flex-col w-[350px] md:w-[600px]">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 rounded-md">
@@ -22,7 +22,7 @@ const PerscriptionsTable = async () => {
                     scope="col"
                     className="px-6 py-3 text-xs font-medium text-gray-600 uppercase tracking-wider text-center"
                   >
-                    Your Perscriptions
+                    Your Prescriptions
                   </th>
                 </tr>
               </thead>
@@ -30,7 +30,9 @@ const PerscriptionsTable = async () => {
                 {perscriptions.map((perscription) => (
                   <tr key={perscription.id}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 flex justify-between items-center">
-                      {perscription.medication}
+                      <div className="w-[250px] md:w-[500px]">
+                        <p className="truncate">{perscription.medication}</p>
+                      </div>
 
                       <LikedButton medicationName={perscription.medication} />
                     </td>

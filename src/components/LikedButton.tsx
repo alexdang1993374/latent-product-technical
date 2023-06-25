@@ -76,7 +76,7 @@ const LikeButton = ({ medicationName }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(true);
-        toast.success("Added to perscriptions!");
+        toast.success("Added to prescriptions!");
       }
     }
 

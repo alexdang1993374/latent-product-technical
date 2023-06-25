@@ -14,7 +14,7 @@ const AccountPage = async () => {
   if (!user) {
     return (
       <div className="w-[200px] h-[50vh] flex items-center">
-        <p>Sign in to see perscriptions</p>
+        <p>Sign in to see prescriptions</p>
       </div>
     );
   }
