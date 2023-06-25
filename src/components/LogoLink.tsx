@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 import latentLogo from "../../public/latent.svg";
+import AccountIcon from "./AccountIcon";
 
 const LogoLink = () => {
-  const router = useRouter();
   return (
-    <div
-      className="w-20 h-10 flex items-center cursor-pointer"
-      onClick={() => router.push("/")}
-    >
+    <div className="w-full md:w-20 h-10 flex items-center justify-between">
       <Image
         src={latentLogo}
         alt="Latent Logo"
@@ -19,6 +15,10 @@ const LogoLink = () => {
         height={14}
         className="object-cover"
       />
+
+      <div className="flex md:hidden justify-end">
+        <AccountIcon />
+      </div>
     </div>
   );
 };

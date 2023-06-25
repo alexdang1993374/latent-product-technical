@@ -28,7 +28,7 @@ const Medication = ({ medication, isLast }: MedicationProps) => {
   return (
     <>
       <div
-        className="flex w-full justify-between cursor-pointer"
+        className="flex flex-col md:flex-row w-full justify-between cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex gap-3">
@@ -44,7 +44,7 @@ const Medication = ({ medication, isLast }: MedicationProps) => {
 
         {user && (
           <button
-            className="rounded-full bg-gray-500 py-2 px-4"
+            className="rounded-full bg-gray-500 py-2 px-4 text-sm w-[175px] mt-1 md:mt-0"
             onClick={addToPerscriptions}
           >
             Add to perscriptions

@@ -1,3 +1,4 @@
+import Nav from "@/components/Nav";
 import { Figtree } from "next/font/google";
 import ModalProvider from "../../providers/ModalProvider";
 import SupabaseProvider from "../../providers/SupabaseProvider";
@@ -24,6 +25,7 @@ export default function RootLayout({
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
+            <Nav />
             <main className="flex min-h-screen flex-col items-center justify-between p-24">
               {children}
             </main>
