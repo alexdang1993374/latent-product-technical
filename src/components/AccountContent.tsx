@@ -20,7 +20,7 @@ const AccountContent = async () => {
 
   return (
     <div className="w-full h-full flex flex-col gap-5">
-      <div>Welcome {user.full_name}</div>
+      {user.full_name && <div>Welcome {user.full_name}</div>}
 
       <SignOut />
     </div>

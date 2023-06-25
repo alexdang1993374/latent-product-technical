@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { useUser } from "@/hooks/useUser";
 import { IMedicationResult } from "@/types";
+import LikedButton from "./LikedButton";
 
 interface MedicationProps {
   medication: IMedicationResult;
@@ -42,14 +43,7 @@ const Medication = ({ medication, isLast }: MedicationProps) => {
           {medication.openfda.brand_name[0]}
         </div>
 
-        {user && (
-          <button
-            className="rounded-full bg-gray-500 py-2 px-4 text-sm w-[175px] mt-1 md:mt-0"
-            onClick={addToPerscriptions}
-          >
-            Add to perscriptions
-          </button>
-        )}
+        <LikedButton medicationName={medication.openfda.brand_name[0]} />
       </div>
 
       <motion.div
