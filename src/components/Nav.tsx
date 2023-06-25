@@ -14,7 +14,7 @@ const Nav = () => {
   return (
     <nav
       className={
-        "w-full flex items-center justify-between fixed top-0 z-2 px-12 md:px-24 py-5 gap-1 bg-black " +
+        "w-full flex items-center justify-between fixed top-0 z-10 px-12 md:px-24 py-5 gap-1 bg-black " +
         (isAccountsPage ? "flex-row" : "flex-col md:flex-row")
       }
     >

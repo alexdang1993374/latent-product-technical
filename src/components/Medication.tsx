@@ -7,7 +7,6 @@ import LikedButton from "./LikedButton";
 
 interface MedicationProps {
   medication: IMedicationResult;
-  isLast: boolean;
 }
 
 const variants = {
@@ -15,7 +14,7 @@ const variants = {
   closed: { height: 0 },
 };
 
-const Medication = ({ medication, isLast }: MedicationProps) => {
+const Medication = ({ medication }: MedicationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const noDetails: boolean =
     !medication.description && !medication.dosage_forms_and_strengths;
@@ -41,9 +40,7 @@ const Medication = ({ medication, isLast }: MedicationProps) => {
       </div>
 
       <motion.div
-        className={`overflow-hidden rounded-lg bg-gray-500 ${
-          isLast ? "mb-8" : ""
-        }`}
+        className="overflow-hidden rounded-lg bg-gray-500"
         variants={variants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
