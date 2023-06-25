@@ -23,9 +23,8 @@ const LogoLink = () => {
   return (
     <div
       className={
-        isAccountsPage
-          ? ""
-          : "w-full" + " md:w-20 h-10 flex items-center justify-between"
+        (isAccountsPage ? "" : "w-full") +
+        " md:w-20 h-10 flex items-center justify-between"
       }
     >
       <div className={isAccountsPage ? "cursor-pointer" : ""} onClick={goHome}>

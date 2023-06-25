@@ -15,6 +15,8 @@ const MedicationList = () => {
   const [medicationData, setMedicationData] = useState<IMedicationResult[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const medicationList: IMedicationResult[] = removeDuplicates(medicationData);
+
   useEffect(() => {
     let isMounted = true;
 
@@ -58,14 +60,13 @@ const MedicationList = () => {
     <div className="flex flex-col gap-4 text-left">
       <p className="text-xl mb-4 font-bold">Click to see details</p>
 
-      {removeDuplicates(medicationData).map(
-        (result: IMedicationResult, index: number) => (
-          <Medication
-            key={result.openfda.brand_name[0] + index}
-            medication={result}
-          />
-        )
-      )}
+      {medicationList.map((result: IMedicationResult, index: number) => (
+        <Medication
+          key={result.openfda.brand_name[0] + index}
+          medication={result}
+          isLast={index === medicationList.length - 1}
+        />
+      ))}
     </div>
   );
 };
