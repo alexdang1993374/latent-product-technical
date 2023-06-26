@@ -3,12 +3,12 @@ import { create } from "zustand";
 
 interface IDrugSelectorStore {
   selectedDrug: TMedication | undefined;
-  setSelectedDrug: (drug: TMedication) => void;
+  setSelectedDrug: (selectedDrug: TMedication) => void;
 }
 
 const useDrugSelector = create<IDrugSelectorStore>((set) => ({
   selectedDrug: undefined,
-  setSelectedDrug: (drug) => set({ selectedDrug: drug }),
+  setSelectedDrug: (selectedDrug) => set({ selectedDrug }),
 }));
 
 export default useDrugSelector;

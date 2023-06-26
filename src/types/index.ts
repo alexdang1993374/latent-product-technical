@@ -25,4 +25,5 @@ export interface IUserDetails {
 export interface IPerscription {
   medication: string;
   id: string;
+  user_id: string;
 }

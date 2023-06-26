@@ -34,7 +34,10 @@ const PerscriptionsTable = async () => {
                         <p className="truncate">{perscription.medication}</p>
                       </div>
 
-                      <LikedButton medicationName={perscription.medication} />
+                      <LikedButton
+                        medicationName={perscription.medication}
+                        fromPrescriptionList
+                      />
                     </td>
                   </tr>
                 ))}

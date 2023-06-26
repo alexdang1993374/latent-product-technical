@@ -5,44 +5,48 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
+import useUserPrescriptions from "@/hooks/useUserPrescriptions";
 
 interface ILikeButton {
   medicationName: string;
+  fromPrescriptionList?: boolean;
 }
 
-const LikeButton = ({ medicationName }: ILikeButton) => {
+const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
   const router = useRouter();
   const { supabaseClient } = useSessionContext();
 
   const authModal = useAuthModal();
   const { user } = useUser();
+  const userPrescriptions = useUserPrescriptions();
 
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(fromPrescriptionList || false);
 
   useEffect(() => {
-    if (!user?.id) {
+    if (!user?.id || fromPrescriptionList) {
       return;
     }
 
-    const fetchData = async () => {
-      const { data, error } = await supabaseClient
-        .from("perscriptions")
-        .select("*")
-        .eq("user_id", user.id)
-        .eq("medication", medicationName)
-        .single();
-
-      if (!error && data) {
-        setIsLiked(true);
+    const fetchPrescriptions = () => {
+      for (let prescription of userPrescriptions.userPrescriptions) {
+        if (prescription.medication === medicationName) {
+          setIsLiked(true);
+          return;
+        }
       }
     };
 
-    fetchData();
-  }, [medicationName, supabaseClient, user?.id]);
+    fetchPrescriptions();
+  }, [
+    medicationName,
+    user?.id,
+    userPrescriptions.userPrescriptions,
+    fromPrescriptionList,
+  ]);
 
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
@@ -64,10 +68,11 @@ const LikeButton = ({ medicationName }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(false);
+        userPrescriptions.setNeedsUpdate(true);
       }
     } else {
       const { error } = await supabaseClient.from("perscriptions").insert({
-        id: uuid(),
+        id: uuidv4(),
         medication: medicationName,
         user_id: user.id,
       });
@@ -76,6 +81,7 @@ const LikeButton = ({ medicationName }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(true);
+        userPrescriptions.setNeedsUpdate(true);
         toast.success("Added to prescriptions!");
       }
     }
