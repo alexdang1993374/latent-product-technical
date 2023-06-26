@@ -1,5 +1,7 @@
-import Nav from "@/components/Nav";
 import { Figtree } from "next/font/google";
+
+import Background from "@/components/Background";
+import Nav from "@/components/Nav";
 import ModalProvider from "../../providers/ModalProvider";
 import SupabaseProvider from "../../providers/SupabaseProvider";
 import ToasterProvider from "../../providers/ToasterProvider";
@@ -20,13 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className} relative`}>
         <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
+            <Background />
             <Nav />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-hero-pattern bg-cover bg-no-repeat bg-center">
+            <main className="flex min-h-screen flex-col items-center justify-between p-24 z-primary relative">
               {children}
             </main>
           </UserProvider>

@@ -1,6 +1,6 @@
 # Latent Health Technical Project
 
-This project is a full stack application developed as a technical project for Latent Health. It is built with Next.js, using the new app router, and optimized with React server components for an efficient, high-performing user experience.
+This project is a full stack application developed as a technical project for Latent Health. It is built with Next.js 13, using the new app router, and optimized with React server components for an efficient, high-performing user experience.
 
 Visit the website at [https://latent-product-technical.vercel.app/](https://latent-product-technical.vercel.app/)
 
@@ -22,6 +22,7 @@ Visit the website at [https://latent-product-technical.vercel.app/](https://late
 - [Next.js](https://nextjs.org/)
 - [React Server Components](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)
 - [Supabase](https://supabase.io/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Getting Started
 
