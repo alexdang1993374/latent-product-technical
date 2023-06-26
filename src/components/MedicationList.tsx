@@ -51,7 +51,7 @@ const MedicationList = () => {
   }, [drugSelector.selectedDrug]);
 
   useEffect(() => {
-    if (!user || medicationData.length === 0) {
+    if (!user || medicationData.length === 0 || loading) {
       return;
     }
 
@@ -80,7 +80,7 @@ const MedicationList = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, medicationData, userPrescriptions]);
+  }, [user, medicationData, userPrescriptions.needsUpdate, loading]);
 
   if (medicationData.length === 0 && !loading) {
     return <Default />;

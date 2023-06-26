@@ -58,6 +58,7 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
     }
 
     if (isLiked) {
+      userPrescriptions.setNeedsUpdate(true);
       const { error } = await supabaseClient
         .from("perscriptions")
         .delete()
@@ -68,9 +69,9 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(false);
-        userPrescriptions.setNeedsUpdate(true);
       }
     } else {
+      userPrescriptions.setNeedsUpdate(true);
       const { error } = await supabaseClient.from("perscriptions").insert({
         id: uuidv4(),
         medication: medicationName,
@@ -81,7 +82,6 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
         toast.error(error.message);
       } else {
         setIsLiked(true);
-        userPrescriptions.setNeedsUpdate(true);
         toast.success("Added to prescriptions!");
       }
     }
