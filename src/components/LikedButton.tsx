@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import useUserPrescriptions from "@/hooks/useUserPrescriptions";
+import { IPerscription } from "@/types";
 
 interface ILikeButton {
   medicationName: string;
@@ -41,12 +42,7 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
     };
 
     fetchPrescriptions();
-  }, [
-    medicationName,
-    user?.id,
-    userPrescriptions.userPrescriptions,
-    fromPrescriptionList,
-  ]);
+  }, [medicationName, user?.id, userPrescriptions, fromPrescriptionList]);
 
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
@@ -58,7 +54,11 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
     }
 
     if (isLiked) {
-      userPrescriptions.setNeedsUpdate(true);
+      const newPrescriptionList = userPrescriptions.userPrescriptions.filter(
+        (prescription) => prescription.medication !== medicationName
+      );
+      userPrescriptions.setUserPrescriptions(newPrescriptionList);
+
       const { error } = await supabaseClient
         .from("perscriptions")
         .delete()
@@ -71,12 +71,18 @@ const LikeButton = ({ medicationName, fromPrescriptionList }: ILikeButton) => {
         setIsLiked(false);
       }
     } else {
-      userPrescriptions.setNeedsUpdate(true);
-      const { error } = await supabaseClient.from("perscriptions").insert({
+      const newPrescriptionList = [...userPrescriptions.userPrescriptions];
+      const newMedication: IPerscription = {
         id: uuidv4(),
         medication: medicationName,
         user_id: user.id,
-      });
+      };
+      newPrescriptionList.push(newMedication);
+      userPrescriptions.setUserPrescriptions(newPrescriptionList);
+
+      const { error } = await supabaseClient
+        .from("perscriptions")
+        .insert(newMedication);
 
       if (error) {
         toast.error(error.message);
